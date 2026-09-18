@@ -1,0 +1,45 @@
+[build]
+  publish = "."
+
+# Legacy flat URLs -> real 301s to the new folder pages.
+# (The .html stub files still exist as a fallback with client-side
+# meta-refresh + noindex, in case these redirects aren't picked up.)
+[[redirects]]
+  from = "/about.html"
+  to = "/about/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/experience.html"
+  to = "/experience/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/work.html"
+  to = "/experience/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products.html"
+  to = "/projects/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
