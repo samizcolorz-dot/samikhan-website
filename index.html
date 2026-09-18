@@ -37,31 +37,32 @@
 </head>
 <body>
 <header class="nav"><div class="wrap nav-inner">
-  <div class="brand-group"><a class="logo" href="/">Sami Ullah Khan</a><span class="badge-pill">AI TPM</span></div>
+  <div class="brand-group"><a class="logo" href="#home">Sami Ullah Khan</a><span class="badge-pill">AI TPM</span></div>
   <button class="menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links" onclick="var n=document.getElementById('nav-links');n.classList.toggle('open');this.setAttribute('aria-expanded', n.classList.contains('open'));">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
   <nav class="nav-links" id="nav-links" aria-label="Primary">
-    <a href="/" class="active" aria-current="page">Home</a>
-    <a href="/about/">About</a>
-    <a href="/services/">Community</a>
-    <a href="/projects/">Projects</a>
-    <a href="/experience/">Experience</a>
-    <a href="/contact/">Contact</a>
+    <a href="#home" onclick="document.getElementById('nav-links').classList.remove('open')">Home</a>
+    <a href="#about" onclick="document.getElementById('nav-links').classList.remove('open')">About</a>
+    <a href="#community" onclick="document.getElementById('nav-links').classList.remove('open')">Community</a>
+    <a href="#projects" onclick="document.getElementById('nav-links').classList.remove('open')">Projects</a>
+    <a href="#experience" onclick="document.getElementById('nav-links').classList.remove('open')">Experience</a>
+    <a href="#contact" onclick="document.getElementById('nav-links').classList.remove('open')">Contact</a>
     <a href="/assets/Sami-Ullah-Khan-Resume.pdf" download="Sami-Ullah-Khan-Resume.pdf">Resume</a>
   </nav>
   <a class="btn btn-primary nav-cta" href="mailto:samiukhan@gmail.com" style="padding:.5rem .9rem;font-size:.85rem">Email</a>
 </div></header>
 
 <main id="top">
+<div id="home">
 <section class="hero"><div class="wrap hero-grid">
   <div>
     <div class="kicker">AI Technical Product Manager · Product Owner · Senior TPM / Delivery Lead</div>
     <h1>I ship <em>GenAI products</em> — and lead the delivery behind them</h1>
     <p class="lead">25+ years across Telecom, Healthcare, Retail &amp; Analytics, eMarketing, and Construction — owning roadmaps and releases, and personally building production GenAI apps with Claude Code.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="/projects/">View Projects <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <a class="btn btn-secondary" href="/contact/">Contact Me</a>
+      <a class="btn btn-primary" href="#projects">View Projects <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a class="btn btn-secondary" href="#contact">Contact Me</a>
       <a class="link-download" href="/assets/Sami-Ullah-Khan-Resume.pdf" download="Sami-Ullah-Khan-Resume.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download Resume</a>
     </div>
     <div class="quote-card">
@@ -97,31 +98,10 @@
 </div>
 </section>
 
-<section class="alt"><div class="wrap">
-  <p class="section-kicker">About me</p>
-  <h2>Get to know me better</h2>
-  <div class="grid-2">
-    <div class="card">
-      <p>I currently serve as <strong>Sr TPM / Delivery Lead — ONIC, Systems Ltd (2026 – Present)</strong>. Previously at <strong>TEO / StableLogic (2021 – 2025)</strong>, I managed CSCS, Veroxos (Analytics SaaS), and Firstcom Universe — dual Project &amp; Product Manager for Veroxos, reducing manual reporting 60%.</p>
-      <p>My titles have included Senior TPM, Delivery Lead, Product Owner, and Business Analyst — but the work has always been product-shaped: discovery, roadmap, cross-functional delivery, and shipped outcomes.</p>
-    </div>
-    <div class="card">
-      <h3>What I'm optimizing for</h3>
-      <ul class="list">
-        <li>AI / Technical Product Management on platform, SaaS, and AI-workflow products</li>
-        <li>GenAI Product Ownership with production accountability</li>
-        <li>Senior delivery leadership where product vision and execution stay connected</li>
-        <li>Healthcare / compliance-aware digital programs</li>
-      </ul>
-    </div>
-  </div>
-  <p style="margin-top:1rem"><a href="/about/">Read my full story →</a></p>
-</div></section>
-
 <section><div class="wrap">
   <p class="section-kicker">What I bring</p>
   <h2>Product DNA + GenAI shipping muscle</h2>
-  <p class="section-lead">Technical Product Management for platform, SaaS, and AI-workflow products — with senior delivery ownership. This is also what I share when mentoring students and early-career folks — see <a href="/services/">how I contribute →</a></p>
+  <p class="section-lead">Technical Product Management for platform, SaaS, and AI-workflow products — with senior delivery ownership. This is also what I share when mentoring students and early-career folks — see <a href="#community">how I contribute →</a></p>
   <div class="chips" style="margin:0 0 1.4rem">
     <span class="chip">Claude Code</span><span class="chip">Google AI Studio</span>
     <span class="chip">Jira</span><span class="chip">MS Project</span><span class="chip">Power BI</span>
@@ -141,73 +121,323 @@
       <div class="chips"><span class="chip">Agile</span><span class="chip">Jira</span><span class="chip">Power BI</span></div>
     </article>
   </div>
-  <p style="margin-top:1rem"><a href="/services/">See how I contribute →</a></p>
+  <p style="margin-top:1rem"><a href="#community">See how I contribute →</a></p>
+</div></section>
+</div>
+
+<div id="about">
+<section class="page-hero"><div class="wrap">
+  <p class="breadcrumb"><a href="#home">Home</a> / <span>About</span></p>
+  <h1>About me</h1>
+  <p class="lead">AI Technical Product Manager, Product Owner, and Senior TPM / Delivery Lead with 25+ years across Telecom, Healthcare, Retail &amp; Analytics, eMarketing, and Construction.</p>
+</div></section>
+
+<section><div class="wrap grid-2">
+  <div class="card">
+    <p>I currently serve as <strong>Sr TPM / Delivery Lead — ONIC, Systems Ltd (2026 – Present)</strong>. Previously at <strong>TEO / StableLogic (2021 – 2025)</strong>, I managed CSCS, Veroxos (Analytics SaaS), and Firstcom Universe — serving as dual Project &amp; Product Manager for Veroxos (roadmaps, features, real-time KPIs; reduced manual reporting 60%).</p>
+    <p>My titles have included Senior TPM, Delivery Lead, Product Owner, and Business Analyst — but the work has always been product-shaped: discovery, roadmap, cross-functional delivery, and shipped outcomes. I personally build production GenAI apps with Claude Code and Google AI Studio.</p>
+    <div class="card-footnote">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <span>Based in Islamabad · remote-friendly with international teams.</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3 class="mini-label">Working style</h3>
+    <p class="quote-box">"My favorite co-worker is Claude Code. My second favorite is whoever reviews my PRs without complaining."</p>
+    <h3 class="mini-label">What I'm optimizing for</h3>
+    <ul class="list">
+      <li>AI / Technical Product Management on platform, SaaS, and AI-workflow products</li>
+      <li>GenAI Product Ownership with production accountability</li>
+      <li>Senior delivery leadership where product vision and execution stay connected</li>
+      <li>Healthcare / compliance-aware digital programs</li>
+    </ul>
+  </div>
 </div></section>
 
 <section class="alt"><div class="wrap">
-  <p class="section-kicker">Featured projects</p>
-  <h2>GenAI products &amp; selected outcomes</h2>
-  <p class="section-lead">Clickable proof — live apps first, then enterprise outcomes.</p>
-  <div class="grid-3">
-    <article class="card proj">
-      <div class="proj-banner proj-shot"><img src="/assets/projects/taskcue.jpg" alt="TaskCue sign-in screen" loading="lazy"/></div>
-      <div class="tag">Live product</div><h3>TaskCue</h3>
-      <p>AI-assisted task &amp; reminder product with shared calendars and operational workflows.</p>
-      <div class="links"><a href="https://tasks.samikhanapps.com" target="_blank" rel="noopener">tasks.samikhanapps.com →</a></div></article>
-    <article class="card proj">
-      <div class="proj-banner proj-shot"><img src="/assets/projects/finance.jpg" alt="Finance app sign-in screen" loading="lazy"/></div>
-      <div class="tag">Live product</div><h3>Finance</h3>
-      <p>Finance &amp; timesheet product for billing windows, leave, invoices, and budget ledger.</p>
-      <div class="links"><a href="https://finance.samikhanapps.com" target="_blank" rel="noopener">finance.samikhanapps.com →</a></div></article>
-    <article class="card proj">
-      <div class="proj-banner proj-shot"><img src="/assets/projects/medical.jpg" alt="Medical Claims sign-in screen" loading="lazy"/></div>
-      <div class="tag">Live · PWA</div><h3>Medical Claims</h3>
-      <p>Family medical expense tracking with monthly claim PDF export.</p>
-      <div class="links"><a href="https://medical.samikhanapps.com" target="_blank" rel="noopener">medical.samikhanapps.com →</a></div></article>
-  </div>
-  <p style="margin-top:1rem"><a href="/projects/">View all projects →</a></p>
+  <p class="section-kicker">What drives me</p>
+  <h2>Product strategy that ships</h2>
+  <p class="section-lead">I'm passionate about technical and product strategy for efficient, AI-enhanced solutions — bridging the gap between what a roadmap promises and what a team actually ships. Seeing a GenAI idea go from discovery to a live product people use is what keeps me building, not just planning.</p>
 </div></section>
 
 <section><div class="wrap">
-  <p class="section-kicker">Experience</p>
-  <h2>Currently leading delivery at Systems Ltd</h2>
+  <p class="section-kicker">Giving back</p>
+  <h2>Mentorship over monetization</h2>
+  <p class="section-lead">Outside delivery work, I mentor students and early-career PMs and BAs entering tech, and I build GenAI products as free community tools rather than commercial ventures. If you're a student or someone navigating product management or GenAI tooling, I'm happy to talk — see <a href="#community">how I contribute →</a></p>
+</div></section>
+
+<section><div class="wrap">
+  <p class="section-kicker">What I bring</p>
+  <h2>Product DNA + GenAI shipping muscle</h2>
+  <div class="card">
+    <ul class="bring-list">
+      <li><span class="bring-dot" aria-hidden="true"></span><strong>Product DNA:</strong><span>Roadmaps, PRDs/user stories, backlog prioritization, stakeholder alignment, and KPIs — with CBAP-level business analysis rigor.</span></li>
+      <li><span class="bring-dot" aria-hidden="true"></span><strong>GenAI Expertise:</strong><span>Prompt engineering and GenAI product delivery with Claude Code and Google AI Studio — shipped products, not slideware POCs.</span></li>
+      <li><span class="bring-dot" aria-hidden="true"></span><strong>Delivery Leadership:</strong><span>Senior TPM / Delivery Lead for multimillion-dollar programs — Agile, risk, compliance, vendor management, and teams of 30+.</span></li>
+      <li><span class="bring-dot" aria-hidden="true"></span><strong>Regulated &amp; Enterprise:</strong><span>Healthcare MU/HL7 compliance, SaaS analytics, and enterprise programs across Telecom, Healthcare, Retail &amp; Construction.</span></li>
+    </ul>
+    <p style="margin:0;color:var(--muted)">I'm passionate about shipping GenAI products that go beyond slideware — production apps with real users, backed by the same delivery rigor I bring to multimillion-dollar enterprise programs.</p>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <p class="section-kicker">Core expertise</p>
+  <h2>Core Expertise &amp; Skills</h2>
+  <div class="card">
+
+    <div class="expertise-group">
+      <h4>Core Technologies</h4>
+      <div class="tile-grid">
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#2563eb"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Flutter</div>
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#0891b2"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)"/></svg>React</div>
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#059669"><path d="M12 2l8 4.5v11L12 22l-8-4.5v-11z"/><line x1="4" y1="6.5" x2="12" y2="11"/><line x1="20" y1="6.5" x2="12" y2="11"/><line x1="12" y1="11" x2="12" y2="22"/></svg>Node.js</div>
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#1d4ed8"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>MS SQL</div>
+      </div>
+    </div>
+
+    <div class="expertise-group">
+      <h4>GenAI &amp; Modern Tooling</h4>
+      <div class="tile-grid">
+        <div class="tile tile-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>Claude Code</div>
+        <div class="tile tile-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>Google AI Studio</div>
+        <div class="tile tile-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>LLMs</div>
+        <div class="tile tile-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Agentic AI</div>
+        <div class="tile tile-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>Prompt Engineering</div>
+      </div>
+    </div>
+
+    <div class="expertise-group">
+      <h4>Tools &amp; Practices</h4>
+      <div class="tile-grid">
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#475569"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="3" height="9"/><rect x="14" y="7" width="3" height="5"/></svg>Jira</div>
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#9333ea"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>UI/UX Design</div>
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#2563eb"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Agile Delivery</div>
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#059669"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Remote Collaboration</div>
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#d97706"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>A/B Testing</div>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <p class="section-kicker">Credentials</p>
+  <h2>Certifications &amp; education</h2>
+  <p class="section-lead">Future Leaders Program (LUMS 2026) · Project Management (LUMS 2015) · CBAP (2014) · CMMI (2007) · M.S. Computer Sciences (Software Systems)</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="/assets/Sami-Ullah-Khan-Resume.pdf" download="Sami-Ullah-Khan-Resume.pdf">Download Resume</a>
+    <a class="btn btn-ghost" href="#contact">Get in touch</a>
+  </div>
+</div></section>
+</div>
+
+<div id="community">
+<section class="page-hero"><div class="wrap">
+  <p class="breadcrumb"><a href="#home">Home</a> / <span>Community</span></p>
+  <h1>How I contribute</h1>
+  <p class="lead">I spend time helping students break into product management and engineers navigate GenAI tooling — through mentorship, open conversations, and sharing what I've learned building real products. This isn't paid consulting; it's knowledge I'm glad to share.</p>
+</div></section>
+
+<section><div class="wrap grid-3">
+  <article class="card"><div class="tag">01</div><h3>Mentoring aspiring PMs &amp; BAs</h3>
+    <p>Free 1:1 conversations for students and early-career folks on roadmaps, backlog thinking, stakeholder alignment, and breaking into product roles.</p></article>
+  <article class="card"><div class="tag">02</div><h3>GenAI tooling guidance</h3>
+    <p>Helping engineers and PMs get productive with Claude Code, Google AI Studio, and prompt-driven delivery workflows.</p></article>
+  <article class="card"><div class="tag">03</div><h3>Community Q&amp;A on delivery leadership</h3>
+    <p>Sharing lessons from enterprise and healthcare-compliance programs with anyone navigating similar delivery challenges.</p></article>
+  <article class="card"><div class="tag">04</div><h3>Healthcare &amp; compliance know-how</h3>
+    <p>EHR / MU / HL7 experience — happy to talk through what worked on Panacea MU Stage-2 with anyone tackling similar programs.</p></article>
+  <article class="card"><div class="tag">05</div><h3>Open knowledge-sharing on shipped GenAI products</h3>
+    <p>How TaskCue, Finance, and Medical Claims were built — for anyone learning to ship real GenAI products, not slideware.</p></article>
+  <article class="card"><div class="tag">Connect</div><h3>Let's talk</h3>
+    <p>Happy to talk — students, early-career folks, or anyone curious about GenAI product delivery.</p>
+    <p style="margin-top:.8rem"><a class="btn btn-primary" href="#contact">Contact</a></p></article>
+</div></section>
+</div>
+
+<div id="projects">
+<section class="page-hero"><div class="wrap">
+  <p class="breadcrumb"><a href="#home">Home</a> / <span>Projects</span></p>
+  <h1>Projects</h1>
+  <p class="lead">Clickable proof — live GenAI apps first, then enterprise delivery outcomes. These are free tools, not commercial products — built to solve real problems for my own use and to share with anyone who finds them useful.</p>
+</div></section>
+
+<section><div class="wrap grid-3">
+  <article class="card proj">
+    <div class="proj-banner proj-shot"><img src="/assets/projects/taskcue.jpg" alt="TaskCue sign-in screen" loading="lazy"/></div>
+    <h3>TaskCue</h3>
+    <p class="proj-meta">Live Product · Personal Build</p>
+    <p>Teams needed a lightweight way to share tasks and reminders without adopting a heavy project tool. AI-assisted task &amp; reminder product with shared calendars and operational workflows.</p>
+    <p class="proj-role"><strong>Role:</strong> Product Owner &amp; Builder</p>
+    <div class="chips"><span class="chip">Claude Code</span><span class="chip">React</span><span class="chip">Node.js</span></div>
+    <div class="links"><a href="https://tasks.samikhanapps.com" target="_blank" rel="noopener">tasks.samikhanapps.com →</a></div>
+  </article>
+  <article class="card proj">
+    <div class="proj-banner proj-shot"><img src="/assets/projects/finance.jpg" alt="Finance app sign-in screen" loading="lazy"/></div>
+    <h3>Finance</h3>
+    <p class="proj-meta">Live Product · Personal Build</p>
+    <p>Built to replace manual spreadsheets for billing windows, leave, and budget tracking. Finance &amp; timesheet product covering invoices and budget ledger.</p>
+    <p class="proj-role"><strong>Role:</strong> Product Owner &amp; Builder</p>
+    <div class="chips"><span class="chip">Claude Code</span><span class="chip">React</span><span class="chip">MySQL</span></div>
+    <div class="links"><a href="https://finance.samikhanapps.com" target="_blank" rel="noopener">finance.samikhanapps.com →</a></div>
+  </article>
+  <article class="card proj">
+    <div class="proj-banner proj-shot"><img src="/assets/projects/medical.jpg" alt="Medical Claims sign-in screen" loading="lazy"/></div>
+    <h3>Medical Claims</h3>
+    <p class="proj-meta">Live · PWA · Personal Build</p>
+    <p>Families tracking medical spend needed one place to log expenses and export claims. Family medical expense tracking with monthly claim PDF export.</p>
+    <p class="proj-role"><strong>Role:</strong> Product Owner &amp; Builder</p>
+    <div class="chips"><span class="chip">Google AI Studio</span><span class="chip">PWA</span><span class="chip">Healthcare</span></div>
+    <div class="links"><a href="https://medical.samikhanapps.com" target="_blank" rel="noopener">medical.samikhanapps.com →</a></div>
+  </article>
+  <article class="card proj">
+    <div class="proj-banner" style="background:linear-gradient(135deg,#0284c7,#0ea5e9)">DE</div>
+    <h3>Dental EHR</h3>
+    <p class="proj-meta">GenAI Product · Client Build</p>
+    <p>A dental practice needed an MU-compliant EHR without enterprise-vendor overhead. Built with GenAI-assisted R&amp;D.</p>
+    <p class="proj-role"><strong>Role:</strong> Product Owner &amp; Builder</p>
+    <div class="chips"><span class="chip">MU / HL7</span><span class="chip">GenAI-assisted</span></div>
+    <p style="margin-top:.5rem"><strong>Result:</strong> QA effort −35%</p>
+  </article>
+  <article class="card proj">
+    <div class="proj-banner" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">BC</div>
+    <h3>BarkCrush</h3>
+    <p class="proj-meta">GenAI Product · Web + Mobile</p>
+    <p>A social app needed faster release cycles without sacrificing quality. Web + Mobile social app built with product management + AI-assisted delivery.</p>
+    <p class="proj-role"><strong>Role:</strong> Product Owner &amp; Builder</p>
+    <div class="chips"><span class="chip">Web</span><span class="chip">Mobile</span><span class="chip">AI-assisted</span></div>
+    <p style="margin-top:.5rem"><strong>Result:</strong> Releases +22% faster</p>
+  </article>
+  <article class="card proj">
+    <div class="proj-banner" style="background:linear-gradient(135deg,#0f3d6e,#1e293b)">EP</div>
+    <h3>CSCS · Veroxos · Firstcom</h3>
+    <p class="proj-meta">Enterprise · TEO / StableLogic (2021–2025)</p>
+    <p>UK compliance, analytics SaaS, and unified communications programs needing dual product/delivery ownership at enterprise scale.</p>
+    <p class="proj-role"><strong>Role:</strong> Senior TPM &amp; Product Owner</p>
+    <div class="chips"><span class="chip">Agile</span><span class="chip">Jira</span><span class="chip">Power BI</span></div>
+    <p style="margin-top:.5rem"><strong>Result:</strong> 35% faster · −60% reporting effort</p>
+  </article>
+</div></section>
+</div>
+
+<div id="experience">
+<section class="page-hero"><div class="wrap">
+  <p class="breadcrumb"><a href="#home">Home</a> / <span>Experience</span></p>
+  <h1>Professional experience</h1>
+  <p class="lead">Career journey and achievements across enterprise delivery, SaaS product ownership, and healthcare compliance.</p>
+</div></section>
+
+<section><div class="wrap">
   <div class="timeline">
     <article class="job">
       <div class="job-top"><strong>Systems Ltd</strong><span class="when">2026 – Present · Islamabad / Remote</span></div>
       <h4>Sr Technical Project Manager / Delivery Lead — ONIC</h4>
       <ul class="list">
         <li>Lead end-to-end technical delivery and release outcomes across enterprise programs.</li>
+        <li>Align engineering, QA, BA/PO, and business stakeholders on scope, risk, and release.</li>
         <li>Embed GenAI tooling into delivery workflows; continue shipping personal GenAI products as community-support tools, not for commercial gain.</li>
       </ul>
       <div class="chips"><span class="chip">Delivery Lead</span><span class="chip">GenAI workflows</span><span class="chip">Enterprise programs</span></div>
     </article>
+    <article class="job">
+      <div class="job-top"><strong>TEO Denmark / StableLogic UK</strong><span class="when">Dec 2021 – 2025 · Remote delivery</span></div>
+      <h4>Sr Technical Project Manager / Product Owner</h4>
+      <ul class="list">
+        <li><strong>CSCS (UK):</strong> 35% faster performance, 25% fewer support queries, £1.5M+ on time.</li>
+        <li><strong>Veroxos Analytics SaaS:</strong> Dual PM/PO; 60% less manual reporting.</li>
+        <li><strong>Firstcom Universe:</strong> 25% efficiency gain; budgets to $1.8M; teams of 30+.</li>
+      </ul>
+      <div class="chips"><span class="chip">Product Ownership</span><span class="chip">SaaS</span><span class="chip">Compliance</span><span class="chip">Analytics</span></div>
+    </article>
+    <article class="job">
+      <div class="job-top"><strong>Systems Ltd</strong><span class="when">Feb 2019 – Dec 2021 · Lahore</span></div>
+      <h4>Project Manager / Business Analyst / Scrum Master</h4>
+      <ul class="list">
+        <li>Mattress Firm &amp; Regeneron BI: 60% less manual reporting · Telenor GSS accuracy +40%.</li>
+        <li>Award: Best Data Analytics Project Manager (2020).</li>
+      </ul>
+      <div class="chips"><span class="chip">BA</span><span class="chip">Analytics</span><span class="chip">Scrum</span></div>
+    </article>
+    <article class="job">
+      <div class="job-top"><strong>OA Systems · Consulting · Earlier roles</strong><span class="when">2000 – 2019</span></div>
+      <h4>PM / QA Manager / BA · Engineering foundation</h4>
+      <ul class="list">
+        <li>Panacea EHR: 100% MU Stage-2; avoided $450K+ penalties · Best BA &amp; Best Employee (2015).</li>
+        <li>Earlier leadership at TEO, Ultimus, ZTE (PTCL 3M+ subscribers), and software engineering roles.</li>
+      </ul>
+      <div class="chips"><span class="chip">Healthcare MU</span><span class="chip">HL7</span><span class="chip">Telecom</span><span class="chip">QA leadership</span></div>
+    </article>
   </div>
-  <p style="margin-top:1rem"><a href="/experience/">See full career journey →</a></p>
 </div></section>
 
 <section class="alt"><div class="wrap">
-  <p class="section-kicker">Get in touch</p>
-  <h2>Let's collaborate and build something useful</h2>
-  <p class="section-lead">Happy to walk through live GenAI products or discuss platform / SaaS / AI-workflow delivery challenges.</p>
-  <div class="contact">
-    <a class="card" href="mailto:samiukhan@gmail.com"><h3>Email</h3><p>samiukhan@gmail.com</p></a>
-    <a class="card" href="tel:+923215111946"><h3>Phone / WhatsApp</h3><p>(+92) 321-511-1946</p></a>
-    <a class="card" href="https://www.linkedin.com/in/samikhan946/" target="_blank" rel="noopener"><h3>LinkedIn</h3><p>linkedin.com/in/samikhan946</p></a>
+  <p class="section-kicker">Credentials</p>
+  <h2>Certifications &amp; education</h2>
+  <p class="section-lead">Project Management (LUMS 2015) · CBAP (2014) · CMMI (2007) · M.S. Computer Sciences (Software Systems)</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="/assets/Sami-Ullah-Khan-Resume.pdf" download="Sami-Ullah-Khan-Resume.pdf">Download Resume</a>
+    <a class="btn btn-ghost" href="#contact">Get in touch</a>
   </div>
 </div></section>
+</div>
+
+<div id="contact">
+<section class="page-hero"><div class="wrap">
+  <p class="breadcrumb"><a href="#home">Home</a> / <span>Contact</span></p>
+  <h1>Let's connect</h1>
+  <p class="lead">Happy to connect — whether you're a student exploring product management, an engineer curious about GenAI delivery, or just want to talk shop.</p>
+</div></section>
+
+<section><div class="wrap contact">
+  <a class="card" href="mailto:samiukhan@gmail.com"><h3>Email</h3><p>samiukhan@gmail.com</p></a>
+  <a class="card" href="tel:+923215111946"><h3>Phone / WhatsApp</h3><p>(+92) 321-511-1946</p></a>
+  <a class="card" href="https://www.linkedin.com/in/samikhan946/" target="_blank" rel="noopener"><h3>LinkedIn</h3><p>linkedin.com/in/samikhan946</p></a>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <p class="section-kicker">Based in</p>
+  <h2>Islamabad, Pakistan</h2>
+  <p class="section-lead">Sr TPM / Delivery Lead — ONIC, Systems Ltd. · Distributed team leadership · Mentoring students and empowering future tech leaders.</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="mailto:samiukhan@gmail.com">Send an email</a>
+    <a class="btn btn-ghost" href="/assets/Sami-Ullah-Khan-Resume.pdf" download="Sami-Ullah-Khan-Resume.pdf">Download Resume</a>
+  </div>
+</div></section>
+</div>
 </main>
 
 <footer class="footer"><div class="wrap footer-inner">
   <div>
     <p><strong>Sami Ullah Khan</strong> · AI Technical Product Manager · Product Owner · Senior TPM / Delivery Lead · GenAI Product Builder</p>
     <p class="footer-meta">Systems Ltd (2026 – Present) · Islamabad · Remote-friendly · Future Leaders Program (LUMS 2026) · LUMS PM (2015) · CBAP (2014) · CMMI (2007)</p>
-    <p class="footer-copy">© 2026 www.SamiKhanApps.com</p>
   </div>
   <div class="social-row" aria-label="Social links">
     <a class="social-icon" href="mailto:samiukhan@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg></a>
     <a class="social-icon" href="tel:+923215111946" aria-label="Phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
     <a class="social-icon" href="https://www.linkedin.com/in/samikhan946/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
   </div>
-</div></footer>
+</div>
+<div class="wrap footer-bottom">
+  <p class="footer-copy">© 2026 www.SamiKhanApps.com</p>
+</div>
+</footer>
+<script>
+(function(){
+  var sections = document.querySelectorAll('main > div[id]');
+  var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  var map = {};
+  navLinks.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var setActive = function(id){
+    navLinks.forEach(function(a){ a.classList.remove('active'); a.removeAttribute('aria-current'); });
+    if (map[id]) { map[id].classList.add('active'); map[id].setAttribute('aria-current', 'page'); }
+  };
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+  sections.forEach(function(s){ observer.observe(s); });
+})();
+</script>
 </body>
 </html>
