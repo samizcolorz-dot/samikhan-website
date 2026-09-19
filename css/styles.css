@@ -36,7 +36,7 @@ a{color:var(--accent);text-decoration:none;overflow-wrap:anywhere} a:hover{text-
 .btn-ghost{background:#fff;color:var(--brand);border-color:var(--line)}.btn-ghost:hover{border-color:#94a3b8}
 .hero{padding:4.5rem 0 3rem;background:linear-gradient(180deg,#f1f5f9 0%, #ffffff 70%)}
 .page-hero{padding:3.4rem 0 1.2rem;background:linear-gradient(180deg,#f1f5f9 0%, #ffffff 70%)}
-.page-hero h1{font-size:clamp(1.9rem,3.6vw,2.6rem);letter-spacing:-.03em;margin:0 0 .6rem;color:var(--brand)}
+.page-hero h1,.page-hero h2{font-size:clamp(1.9rem,3.6vw,2.6rem);letter-spacing:-.03em;margin:0 0 .6rem;color:var(--brand)}
 .breadcrumb{color:#94a3b8;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:0 0 1rem}
 .breadcrumb a{color:#94a3b8;font-weight:700}
 .breadcrumb a:hover{color:var(--brand)}
