@@ -449,6 +449,24 @@
   }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
   sections.forEach(function(s){ observer.observe(s); });
 })();
+
+(function(){
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a');
+    if (!el) return;
+    var href = el.getAttribute('href') || '';
+    if (typeof gtag !== 'function') return;
+    if (href.endsWith('Resume.pdf')) {
+      gtag('event', 'resume_download', { file_name: 'Sami-Ullah-Khan-Resume.pdf' });
+    } else if (href.indexOf('mailto:') === 0) {
+      gtag('event', 'contact_click', { method: 'email' });
+    } else if (href.indexOf('tel:') === 0) {
+      gtag('event', 'contact_click', { method: 'phone' });
+    } else if (href.indexOf('linkedin.com') !== -1) {
+      gtag('event', 'contact_click', { method: 'linkedin' });
+    }
+  });
+})();
 </script>
 </body>
 </html>
