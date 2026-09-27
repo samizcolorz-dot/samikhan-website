@@ -4,11 +4,12 @@ name: Refresh project screenshots
 # samikhanapps.com. They are static files, so they drift as soon as an app
 # changes. This recaptures them and deploys.
 #
-# Three ways in:
-#   repository_dispatch  - an app repo fires this right after it deploys,
-#                          so the card updates within a minute of the change
-#   schedule             - weekly safety net in case a dispatch is missed
-#   workflow_dispatch    - run it by hand, optionally for one app
+# How it runs:
+#   schedule             - weekly, the normal path
+#   workflow_dispatch    - run it by hand, optionally for a single app
+#   repository_dispatch  - listener for an app repo to fire this straight
+#                          after it deploys. Nothing sends this today; see
+#                          deploy/README.md for what wiring it up requires.
 on:
   repository_dispatch:
     types: [app-updated]

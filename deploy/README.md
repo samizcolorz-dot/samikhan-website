@@ -79,6 +79,64 @@ ssh -i ~/.ssh/samikhanapps_template_deploy root@13.140.159.15 "nginx -t && syste
   `preload` unless every subdomain is committed to HTTPS-only permanently.
   Note this cannot be walked back for clients that already cached it.
 
+## Project card screenshots
+
+The three project cards show real screenshots of the live apps. They are static
+files, so they go stale whenever an app changes — this is automated rather than
+recaptured by hand.
+
+`.github/workflows/refresh-screenshots.yml` runs `scripts/refresh-screenshots.js`
+**weekly (Mondays 03:00 UTC)**, or on demand:
+
+```bash
+gh workflow run refresh-screenshots.yml              # all three apps
+gh workflow run refresh-screenshots.yml -f app=medical   # just one
+```
+
+It commits only when an app actually looks different, then calls `deploy.yml`.
+A push made with `GITHUB_TOKEN` does not trigger other workflows, which is why
+the deploy is an explicit `workflow_call` rather than relying on the push.
+
+### Why the diff check is fussy
+
+A naive "did the bytes change" check committed on every single run. Two reasons,
+both measured:
+
+1. Every browser launch rasterised text slightly differently — about **1.2%** of
+   pixels on a page that had not changed. The `LAUNCH_ARGS` in the script
+   (`--disable-gpu`, `--force-color-profile=srgb`, `--font-render-hinting=none`,
+   `--disable-lcd-text`) pin this to **0.000%**.
+2. It compared the lossless PNG capture against the stored lossy WebP, so it was
+   measuring compression artefacts too. TaskCue's gradient scored 1.18% on its
+   own. Both sides are now WebP-encoded before comparing.
+
+Verified in CI: a second consecutive run reports 0.00% on all three, commits
+nothing and skips the deploy. Brightening a stored image is caught at 31.60%.
+
+Comparing across platforms is not meaningful — running the script locally on
+Windows against CI-generated (Linux) images always shows ~1% because font
+rasterisation differs. Trust the CI-to-CI numbers.
+
+### Making it immediate instead of weekly
+
+The workflow already listens for `repository_dispatch` with type `app-updated`.
+Nothing sends it today. To make a card refresh within a minute of an app
+deploying, add a final step to that app's own deploy workflow:
+
+```yaml
+      - name: Refresh portfolio screenshot
+        run: |
+          curl -sf -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTFOLIO_DISPATCH_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/samizcolorz-dot/samikhan-website/dispatches \
+            -d '{"event_type":"app-updated","client_payload":{"app":"taskcue"}}'
+```
+
+`app` is one of `taskcue`, `finance`, `medical`. This needs a GitHub PAT with
+`contents: write` on this repo, stored as a secret in each app repo — use a
+fine-grained token scoped to this single repository.
+
 ## After deploying
 
 In Search Console: resubmit `sitemap.xml` and request indexing of the home page.
