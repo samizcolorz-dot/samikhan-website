@@ -1,0 +1,76 @@
+name: Refresh project screenshots
+
+# The project cards show real screenshots of tasks./finance./medical.
+# samikhanapps.com. They are static files, so they drift as soon as an app
+# changes. This recaptures them and deploys.
+#
+# Three ways in:
+#   repository_dispatch  - an app repo fires this right after it deploys,
+#                          so the card updates within a minute of the change
+#   schedule             - weekly safety net in case a dispatch is missed
+#   workflow_dispatch    - run it by hand, optionally for one app
+on:
+  repository_dispatch:
+    types: [app-updated]
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'Which app to refresh (taskcue, finance, medical). Blank = all.'
+        required: false
+        type: string
+
+concurrency:
+  group: refresh-screenshots
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install tooling
+        run: |
+          npm install --no-save playwright@1.63.0 sharp@0.33.5
+          npx playwright install --with-deps chromium
+
+      - name: Recapture screenshots
+        run: node scripts/refresh-screenshots.js ${{ inputs.app || github.event.client_payload.app || '' }}
+
+      - name: Commit if the screenshots actually changed
+        id: commit
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet -- assets/projects/; then
+            echo "no visual change, nothing to commit"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git add assets/projects/
+          git commit -m "Refresh project card screenshots
+
+          Recaptured from the live apps by the refresh-screenshots workflow
+          (trigger: ${{ github.event_name }})."
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  # Pushing with GITHUB_TOKEN does not trigger deploy.yml on its own, so call it.
+  deploy:
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit

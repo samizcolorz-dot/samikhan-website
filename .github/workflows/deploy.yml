@@ -5,6 +5,17 @@ on:
     branches:
       - main
   workflow_dispatch:
+  # Lets refresh-screenshots.yml deploy without duplicating the rsync. A push
+  # made with GITHUB_TOKEN does not trigger other workflows, so that job has
+  # to call this one explicitly.
+  workflow_call:
+    secrets:
+      DEPLOY_HOST:
+        required: true
+      DEPLOY_USER:
+        required: true
+      DEPLOY_SSH_KEY:
+        required: true
 
 concurrency:
   group: deploy-production
