@@ -4,20 +4,41 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: SSH deploy
-        uses: appleboy/ssh-action@v1.0.0
+      - uses: actions/checkout@v4
+
+      # rsync the served files only. The web root is not a git repo, so the
+      # previous "git pull" here could never work. Anything not in this list
+      # (deploy/, .github/, archive/, notes) deliberately stays out of the
+      # web root.
+      - name: Deploy site files
+        uses: burnett01/rsync-deployments@7.0.1
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          port: ${{ secrets.DEPLOY_PORT }}
-          command_timeout: 5m
-          script: |
-            set -euo pipefail
-            cd /var/www/samikhan-website
-            git pull origin main
+          switches: -rltvz --delete --chmod=D755,F644
+          path: >-
+            index.html about.html contact.html experience.html products.html work.html
+            robots.txt sitemap.xml favicon.ico apple-touch-icon.png
+            css/ assets/ about/ community/ contact/ experience/ projects/
+          remote_path: /var/www/samikhan-website/
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Smoke test
+        run: |
+          set -euo pipefail
+          code=$(curl -s -o /dev/null -w "%{http_code}" https://samikhanapps.com/)
+          echo "homepage: $code"
+          [ "$code" = "200" ] || { echo "homepage not 200"; exit 1; }
+          curl -sf https://samikhanapps.com/favicon.ico -o /dev/null && echo "favicon: ok"
+          curl -s https://samikhanapps.com/ | grep -q "<h1" || { echo "no h1 found"; exit 1; }
+          echo "smoke test passed"
