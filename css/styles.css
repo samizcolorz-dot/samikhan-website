@@ -110,11 +110,17 @@ h2{font-size:clamp(1.45rem,2.8vw,1.95rem);letter-spacing:-.025em;margin:0 0 .7re
 .expertise-group{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
 .expertise-group:first-child{margin-top:0;padding-top:0;border-top:0}
 .expertise-group h3,.expertise-group h4{margin:0 0 .7rem;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#64748b}
-.tile-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem}
+.tile-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem;grid-auto-rows:1fr}
 .tile{display:flex;align-items:center;gap:.55rem;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:.65rem .75rem;font-size:.85rem;font-weight:650;color:var(--text)}
 .tile svg{flex:none;width:18px;height:18px;color:var(--brand2)}
 .tile-accent{background:#eff6ff;border-color:#bfdbfe;color:#1e3a8a}
-@media(max-width:600px){.tile-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}}
+@media(max-width:600px){
+  .tile-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+  /* Two-line labels ("Google AI Studio") set the row height. grid-auto-rows
+     equalises tiles inside one grid; this keeps the three skill groups
+     matching each other too, so every tile is the same size on mobile. */
+  .tile{min-height:68px}
+}
 .timeline{display:grid;gap:1rem}
 .job{padding:1.2rem}
 .job-top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.45rem}
