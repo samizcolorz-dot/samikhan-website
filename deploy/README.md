@@ -74,9 +74,10 @@ ssh -i ~/.ssh/samikhanapps_template_deploy root@13.140.159.15 "nginx -t && syste
 - **`styles.css` is cached for a year (`immutable`).** The HTML references
   `/css/styles.css?v=2`; bump that query string whenever the CSS changes, or
   returning visitors get new HTML with stale CSS.
-- **HSTS starts at `max-age=86400`** deliberately. Raise to `31536000` once it
-  has run a week without issues. Don't add `preload` unless every subdomain is
-  committed to HTTPS-only permanently.
+- **HSTS is `max-age=31536000`** (1 year), raised 2026-09-27 after verifying
+  certbot auto-renewal works (`certbot renew --dry-run` passed). Do not add
+  `preload` unless every subdomain is committed to HTTPS-only permanently.
+  Note this cannot be walked back for clients that already cached it.
 
 ## After deploying
 
