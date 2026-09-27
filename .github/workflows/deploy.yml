@@ -16,29 +16,57 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # rsync the served files only. The web root is not a git repo, so the
-      # previous "git pull" here could never work. Anything not in this list
-      # (deploy/, .github/, archive/, notes) deliberately stays out of the
-      # web root.
+      # rsync is called directly rather than through a path-list action:
+      # passing several paths to such an action flattens them into the web
+      # root (css/styles.css lands as /styles.css) and --delete then removes
+      # the real directories. Syncing ./ with excludes keeps the tree intact.
       - name: Deploy site files
-        uses: burnett01/rsync-deployments@7.0.1
-        with:
-          switches: -rltvz --delete --chmod=D755,F644
-          path: >-
-            index.html about.html contact.html experience.html products.html work.html
-            robots.txt sitemap.xml favicon.ico apple-touch-icon.png
-            css/ assets/ about/ community/ contact/ experience/ projects/
-          remote_path: /var/www/samikhan-website/
-          remote_host: ${{ secrets.DEPLOY_HOST }}
-          remote_user: ${{ secrets.DEPLOY_USER }}
-          remote_key: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
 
+          rsync -rltz --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.gitignore' \
+            --exclude='.claude' \
+            --exclude='deploy' \
+            --exclude='archive' \
+            --exclude='pages' \
+            --exclude='website' \
+            --exclude='netlify.toml' \
+            --exclude='vercel.json' \
+            --chmod=D755,F644 \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            ./ "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/www/samikhan-website/"
+
+      # Checks the directory tree survived, not just that something answers.
+      # Note: no `curl | grep -q` — grep -q closes the pipe, curl takes SIGPIPE
+      # and pipefail then fails the step even on a successful match.
       - name: Smoke test
         run: |
           set -euo pipefail
-          code=$(curl -s -o /dev/null -w "%{http_code}" https://samikhanapps.com/)
-          echo "homepage: $code"
-          [ "$code" = "200" ] || { echo "homepage not 200"; exit 1; }
-          curl -sf https://samikhanapps.com/favicon.ico -o /dev/null && echo "favicon: ok"
-          curl -s https://samikhanapps.com/ | grep -q "<h1" || { echo "no h1 found"; exit 1; }
+          fail=0
+          for path in / /css/styles.css /about/ /community/ /projects/ \
+                      /assets/Sami-Ullah-Khan-Resume.pdf /favicon.ico \
+                      /assets/projects/taskcue-800.webp; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://samikhanapps.com${path}")
+            echo "${code}  ${path}"
+            [ "$code" = "200" ] || fail=1
+          done
+
+          body=$(curl -s https://samikhanapps.com/)
+          case "$body" in
+            *"<h1"*) echo "ok  h1 present" ;;
+            *) echo "FAIL  no h1 in homepage"; fail=1 ;;
+          esac
+          case "$body" in
+            *"/css/styles.css"*) echo "ok  stylesheet referenced" ;;
+            *) echo "FAIL  stylesheet link missing"; fail=1 ;;
+          esac
+
+          [ "$fail" = "0" ] || { echo "smoke test FAILED"; exit 1; }
           echo "smoke test passed"
