@@ -9,7 +9,7 @@
 *{box-sizing:border-box} html{scroll-behavior:smooth}
 body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
 img{max-width:100%;height:auto}
-a{color:var(--accent);text-decoration:none;overflow-wrap:anywhere} a:hover{text-decoration:underline}
+a{color:var(--brand2);text-decoration:none;overflow-wrap:anywhere} a:hover{text-decoration:underline}
 .wrap{width:min(var(--max),calc(100% - 2rem));margin:0 auto}
 .nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(12px);background:rgba(238,239,251,.92);border-bottom:1px solid var(--line)}
 .nav-inner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;flex-wrap:wrap}
@@ -47,6 +47,9 @@ a{color:var(--accent);text-decoration:none;overflow-wrap:anywhere} a:hover{text-
 .kicker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand2);flex:none}
 .hero h1{font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.1;letter-spacing:-.035em;margin:0 0 1rem;color:var(--text)}
 .hero h1 em{font-style:normal;color:var(--brand2)}
+.h1-name{display:block;font-size:.55em;letter-spacing:-.02em;color:var(--brand);margin-bottom:.35rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+picture{display:contents}
 .lead{font-size:1.08rem;color:var(--muted);max-width:48ch;margin:0 0 1rem}
 .hero .lead{margin-bottom:1.8rem}
 .actions{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem}
@@ -59,14 +62,14 @@ a{color:var(--accent);text-decoration:none;overflow-wrap:anywhere} a:hover{text-
 .hero-card,.card,.job,.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
 .hero-card{padding:1.2rem;width:100%}
 .hero-card-head{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.8rem}
-.hero-card-head h3{margin:0;font-size:.95rem;color:var(--brand)}
+.hero-card-head h3,.hero-card-title{margin:0;font-size:.95rem;font-weight:700;color:var(--brand)}
 .verified-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .6rem;border-radius:999px;background:#ecfdf5;border:1px solid #a7f3d0;color:#047857;font-size:.68rem;font-weight:800;flex:none}
 .v-dot{width:6px;height:6px;border-radius:50%;background:#10b981;flex:none}
-.outcomes-label{color:#94a3b8;font-size:.78rem;font-weight:600;flex:none}
+.outcomes-label{color:#64748b;font-size:.78rem;font-weight:600;flex:none}
 .metric{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-top:1px solid var(--line);font-size:.92rem}
 .metric:first-of-type{border-top:0}
 .metric strong{color:var(--text)}.metric span{color:var(--muted);text-align:right}
-.num-blue{color:var(--accent);font-style:normal}
+.num-blue{color:var(--brand2);font-style:normal}
 .num-green{color:var(--ok);font-style:normal}
 .live-chip{display:inline-block;background:#e0f2fe;color:#075985;border-radius:999px;padding:.05rem .5rem;font-weight:700;font-style:normal}
 .hero-photo{display:flex;flex-direction:column;align-items:center;gap:.7rem}
@@ -86,6 +89,7 @@ section{padding:3.8rem 0} section.alt{background:var(--soft);border-block:1px so
 .section-kicker{color:var(--brand2);font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin:0 0 .55rem}
 h2{font-size:clamp(1.45rem,2.8vw,1.95rem);letter-spacing:-.025em;margin:0 0 .7rem;color:var(--brand)}
 .section-lead{color:var(--muted);max-width:60ch;margin:0 0 1.5rem}
+.section-lead a,.lead a{text-decoration:underline;text-underline-offset:2px}
 .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:1.1rem}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .card{padding:1.2rem}.card h3{margin:0 0 .45rem;font-size:1.05rem;color:var(--brand)}.card p,.card li{color:var(--muted)}
@@ -105,7 +109,7 @@ h2{font-size:clamp(1.45rem,2.8vw,1.95rem);letter-spacing:-.025em;margin:0 0 .7re
 .bring-list span{color:var(--muted);flex:1 1 240px}
 .expertise-group{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
 .expertise-group:first-child{margin-top:0;padding-top:0;border-top:0}
-.expertise-group h4{margin:0 0 .7rem;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#64748b}
+.expertise-group h3,.expertise-group h4{margin:0 0 .7rem;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#64748b}
 .tile-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem}
 .tile{display:flex;align-items:center;gap:.55rem;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:.65rem .75rem;font-size:.85rem;font-weight:650;color:var(--text)}
 .tile svg{flex:none;width:18px;height:18px;color:var(--brand2)}
@@ -115,7 +119,7 @@ h2{font-size:clamp(1.45rem,2.8vw,1.95rem);letter-spacing:-.025em;margin:0 0 .7re
 .job{padding:1.2rem}
 .job-top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.45rem}
 .job-top strong{font-size:1.02rem;color:var(--text)}.when{color:var(--muted);font-size:.88rem}
-.job h4{margin:.15rem 0 .55rem;color:var(--brand2);font-size:.92rem;font-weight:700}
+.job h3,.job h4{margin:.15rem 0 .55rem;color:var(--brand2);font-size:.92rem;font-weight:700}
 .proj{display:flex;flex-direction:column;gap:.5rem;min-height:100%;transition:transform .2s ease,box-shadow .2s ease;cursor:default}
 .proj:hover{transform:translateY(-6px);box-shadow:0 18px 40px -12px rgba(15,23,42,.18)}
 .proj .links{margin-top:auto;padding-top:.45rem}
@@ -132,7 +136,7 @@ h2{font-size:clamp(1.45rem,2.8vw,1.95rem);letter-spacing:-.025em;margin:0 0 .7re
 .footer-inner{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap}
 @media(max-width:600px){.footer-inner{flex-direction:column;align-items:flex-start}}
 .tag{display:inline-block;color:var(--ok);font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.3rem}
-.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 .contact a.card{color:inherit;text-decoration:none}.contact a.card:hover{border-color:#7dd3fc}
 .footer{border-top:1px solid var(--line);padding:1.6rem 0 2rem;color:var(--muted);font-size:.9rem;background:#fff}
 .footer-meta{font-size:calc(.9rem - 2px)}
